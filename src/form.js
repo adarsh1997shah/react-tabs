@@ -1,9 +1,9 @@
 import React from 'react';
-import './form.css';
+import './Form.css';
 
 class Form extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			questions: [
@@ -11,17 +11,14 @@ class Form extends React.Component {
 					ques: "Please enter the dimensions of the room.",
 					anstype: "text",
 					placeholder: "dimensions",
-					answer: '',
 				},
 				{
 					ques: "Please upload the image file of the room below.",
 					anstype: "file",
-					answer: '',
 				},
 				{
 					ques: "Is electrical work required in drawing room?",
-					anstype: "decision",
-					answer: '',
+					anstype: "radio",
 				}
 			],
 			current: 0,
@@ -63,7 +60,6 @@ class Form extends React.Component {
 	}
 
 	render() {
-		console.log(this.state);
 		return (
 			<React.Fragment>
 				<div className="question-container">
@@ -76,22 +72,36 @@ class Form extends React.Component {
 											<h3>{ q.ques }</h3>
 											{
 												q.anstype === 'text'?
-													<div><input value={ this.state.questions[index].answer } type={ q.anstype } id={index} onChange={ this.handleAnswer } /></div>
+													<div>
+														<input type={ q.anstype } id={index}  name={`ans${index}`} />
+													</div>
 													:
 													''
 											}
 											{
-												q.anstype === 'decision'?
+												q.anstype === 'radio'?
 													<div>
-														<button type="button" className="yes">Yes</button>
-														<button type="button" className="no">No</button>
+														<input
+															type="radio"
+															name={`ans${index}` }
+															className="yes"
+															value="yes"
+														/>
+														Yes
+														<input 
+															type="radio"
+															name={`ans${index}`}
+															className="no"
+															value="no"
+														/>
+														No
 													</div>
 													:
 													''
 											}
 											{
 												q.anstype === 'file'?
-													<div><input type={q.anstype} id={index} /></div>
+													<div><input type={q.anstype} id={index} name={`ans${index}`} /></div>
 													:
 													''
 											}
