@@ -1,0 +1,20 @@
+.tabs-container {
+	width: 90%;
+	margin: auto;
+	display: flex;
+}
+
+.tabs-container .tab {
+	width: calc( 100% / 4 );
+	text-align: center;
+	margin: 5px;
+}
+
+.active {
+	background-color: blue;
+}
+
+.question-wrapper {
+	width: 90%;
+	margin: auto;
+}
