@@ -1,6 +1,6 @@
 import React from 'react';
-import Form from './Form';
-import './Tabs.css';
+import Form from './form';
+import './tabs.css';
 
 
 class Tabs extends React.Component {
