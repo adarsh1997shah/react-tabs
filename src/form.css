@@ -51,6 +51,18 @@ input[type=text] {
 	letter-spacing: 3px;
 }
 
+input[type=radio] {
+	margin-right: 7px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 2px;
+}
+
+input[type=radio]:checked {
+	background-color: green;
+}
 select {
 	width: 100%;
 	border: none;
@@ -84,7 +96,7 @@ select {
 }
 
 #ques3 label{
-	height: 35px;
+	height: 45px;
 	border: 1px solid black;
 }
 
