@@ -74,7 +74,7 @@ class Form extends React.Component {
 											{
 												index === 0?
 													<div style={{margin: '15px 0'}}>
-														<input type={ q.anstype } id={index} type="text" name={`ans${index}`} />
+														<input type={ q.anstype } id={index} type="text" name={`ans${index}`} placeholder={q.placeholder}/>
 													</div>
 													:
 													''
