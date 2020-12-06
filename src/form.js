@@ -49,14 +49,6 @@ class Form extends React.Component {
 		this.setState( { current } );
 	}
 
-	handleAnswer = (e) => {
-		let {questions} = this.state;
-
-		questions[e.target.id].answer = e.target.value;
-
-		this.setState( { questions } );
-	}
-
 	render() {
 		return (
 			<React.Fragment>
