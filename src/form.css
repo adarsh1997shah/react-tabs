@@ -85,7 +85,8 @@ select {
 }
 
 .question label > span {
-	display: inline-block;
+	display: flex;
+	align-items: center;
     position: absolute;
     bottom: 0;
     margin: 8px;
@@ -96,8 +97,10 @@ select {
 }
 
 #ques3 label{
-	height: 45px;
+	height: 40px;
 	border: 1px solid black;
+	display: inline-flex;
+	align-items: center;
 }
 
 .question > div > button {

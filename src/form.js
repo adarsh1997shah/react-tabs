@@ -22,7 +22,7 @@ class Form extends React.Component {
 				},
 				{
 					num: 4,
-					ques: "How many people would require access to the project?",
+					ques: "How many people would require access to the project?*",
 				}
 			],
 			current: 0,
@@ -143,7 +143,7 @@ class Form extends React.Component {
 																name={`ans${index}` }
 																value="myself"
 															/>
-															<span>Myself</span>
+															<span>5 or less</span>
 															</span>
 														</label>
 														<label>
@@ -153,7 +153,7 @@ class Form extends React.Component {
 																name={`ans${index}` }
 																value="team"
 															/>
-															<span>A team</span>
+															<span>6 - 20</span>
 															</span>
 														</label>
 														<label>
@@ -163,7 +163,7 @@ class Form extends React.Component {
 																name={`ans${index}` }
 																value="client"
 															/>
-															<span>A client</span>
+															<span>More than 20</span>
 															</span>
 														</label>
 													</div>
