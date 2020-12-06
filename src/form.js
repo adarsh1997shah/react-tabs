@@ -8,47 +8,45 @@ class Form extends React.Component {
 		this.state = {
 			questions: [
 				{
-					ques: "Please enter the dimensions of the room.",
-					anstype: "text",
-					placeholder: "dimensions",
+					num: 1,
+					ques: "Thanks for finding us. What's your first name? *.",
+					placeholder: "Type your answer here",
 				},
 				{
-					ques: "Please upload the image file of the room below.",
-					anstype: "file",
+					num: 2,
+					ques: "Are you interested in a solution for yourself, a team, or a client? *.",
 				},
 				{
-					ques: "Is electrical work required in drawing room?",
-					anstype: "radio",
+					num: 3,
+					ques: "What you would you be using our solution for?",
+				},
+				{
+					num: 4,
+					ques: "How many people would require access to the project?",
 				}
 			],
 			current: 0,
-			up: -1,
-			down: 1,
 		}
 	}
 
 	handleDown = () => {
-		let { current, up, down } = this.state;
+		let { current } = this.state;
 
-		if( down < this.state.questions.length ) {
-			up = current;
-			current = down;
-			down += 1;
+		if( Math.abs(current) < this.state.questions.length - 1 ) {
+			current--;
 		}
 
-		this.setState( { current, up, down } );
+		this.setState( { current } );
 	}
 
 	handleUp = () => {
-		let { current, up, down } = this.state;
+		let { current } = this.state;
 
-		if( up >= 0 ) {
-			down = current;
-			current = up;
-			up -= 1;
+		if( current < 0 ) {
+			current++;
 		}
 
-		this.setState( { current, up, down } );
+		this.setState( { current } );
 	}
 
 	handleAnswer = (e) => {
@@ -63,45 +61,112 @@ class Form extends React.Component {
 		return (
 			<React.Fragment>
 				<div className="question-container">
-					<form>
+					<form autoComplete="off">
 						{
 							this.state.questions.map( ( q, index ) => {
 								return (
-									<div key={ index } className={'question ' + (this.state.current === index? 'current ':'') + (this.state.up === index? 'up ':'') + (this.state.down === index? 'down':'')}>
+									<div key={ index } className='question'
+
+									style={{transform: `translateY(${(index + this.state.current) * 100}%)`}}
+									>
 										<div className={ `q${index}` }>
-											<h3>{ q.ques }</h3>
+											<h3><span>{ `${q.num} `}</span>&rarr;{` ${q.ques}` }</h3>
 											{
-												q.anstype === 'text'?
-													<div>
-														<input type={ q.anstype } id={index}  name={`ans${index}`} />
+												index === 0?
+													<div style={{margin: '15px 0'}}>
+														<input type={ q.anstype } id={index} type="text" name={`ans${index}`} />
 													</div>
 													:
 													''
 											}
 											{
-												q.anstype === 'radio'?
-													<div>
-														<input
-															type="radio"
-															name={`ans${index}` }
-															className="yes"
-															value="yes"
-														/>
-														Yes
-														<input 
-															type="radio"
-															name={`ans${index}`}
-															className="no"
-															value="no"
-														/>
-														No
+												index === 1?
+													<div style={{margin: '15px 0'}}>
+														<label>
+															<span>
+															<input
+																type="radio"
+																name={`ans${index}` }
+																value="myself"
+															/>
+															<span>Myself</span>
+															</span>
+														</label>
+														<label>
+															<span>
+															<input
+																type="radio"
+																name={`ans${index}` }
+																value="team"
+															/>
+															<span>A team</span>
+															</span>
+														</label>
+														<label>
+															<span>
+															<input
+																type="radio"
+																name={`ans${index}` }
+																value="client"
+															/>
+															<span>A client</span>
+															</span>
+														</label>
 													</div>
 													:
 													''
 											}
 											{
-												q.anstype === 'file'?
-													<div><input type={q.anstype} id={index} name={`ans${index}`} /></div>
+												index === 2?
+													<div style={{margin: '15px 0'}}>
+														<select>
+															<option>Select an option</option>
+															<option>Audience Engagement</option>
+															<option>Customer Research</option>
+															<option>Employee Operation</option>
+															<option>Improving a product or a service</option>
+															<option>Lead generation</option>
+														</select>
+													</div>
+													:
+													''
+											}
+											{
+												index === 3?
+													<div id={`ques${index}`} style={{margin: '15px 0'}}>
+													<label style={{
+
+													}}>
+															<span>
+															<input
+																type="radio"
+																name={`ans${index}` }
+																value="myself"
+															/>
+															<span>Myself</span>
+															</span>
+														</label>
+														<label>
+															<span>
+															<input
+																type="radio"
+																name={`ans${index}` }
+																value="team"
+															/>
+															<span>A team</span>
+															</span>
+														</label>
+														<label>
+															<span>
+															<input
+																type="radio"
+																name={`ans${index}` }
+																value="client"
+															/>
+															<span>A client</span>
+															</span>
+														</label>
+													</div>
 													:
 													''
 											}
